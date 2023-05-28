@@ -1,40 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node {
-    int data;
-    struct Node* left;
-    struct Node* right;
-} Node;
-
-Node* createNode(int data) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
-        printf("Erro: falha na alocação de memória.\n");
-        exit(1);
+void freeTree(int** matrix, int numRows) {
+    for (int i = 0; i < numRows; i++) {
+        free(matrix[i]);
     }
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
-}
-
-Node* insertNode(Node* root, int data) {
-    if (root == NULL) {
-        root = createNode(data);
-    } else {
-        if (data <= root->data) {
-            root->left = insertNode(root->left, data);
-        } else {
-            root->right = insertNode(root->right, data);
-        }
-    }
-    return root;
+    free(matrix);
 }
 
 int main() {
     int numRows, numCols, data;
-    Node* root = NULL;
+    int** matrix;
 
     printf("Digite o número de linhas desejado: ");
     scanf("%d", &numRows);
@@ -42,10 +18,18 @@ int main() {
     printf("Digite o número de colunas desejado: ");
     scanf("%d", &numCols);
 
-    int matrix[numRows][numCols];
+    // Aloca a matriz
+    matrix = (int**)malloc(numRows * sizeof(int*));
+    if (matrix == NULL) {
+        printf("Erro: falha na alocação de memória.\n");
+        return 1;
+    }
     for (int i = 0; i < numRows; i++) {
-        for (int j = 0; j < numCols; j++) {
-            matrix[i][j] = 0;
+        matrix[i] = (int*)malloc(numCols * sizeof(int));
+        if (matrix[i] == NULL) {
+            printf("Erro: falha na alocação de memória.\n");
+            freeTree(matrix, i);
+            return 1;
         }
     }
 
@@ -55,7 +39,6 @@ int main() {
             printf("Valor da posição (%d, %d): ", i, j);
             scanf("%d", &data);
             matrix[i - 1][j - 1] = data;
-            root = insertNode(root, data);
         }
     }
 
@@ -66,6 +49,8 @@ int main() {
         }
         printf("\n");
     }
+
+    freeTree(matrix, numRows);
 
     return 0;
 }
