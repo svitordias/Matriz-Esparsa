@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Função que coloca a matriz na tela
 void freeTree(int** matrix, int numRows) {
     for (int i = 0; i < numRows; i++) {
         free(matrix[i]);
@@ -12,6 +13,7 @@ int main() {
     int numRows, numCols, data;
     int** matrix;
 
+    // Usuário define o tamnho da matriz
     printf("Digite o número de linhas desejado: ");
     scanf("%d", &numRows);
 
