@@ -1,6 +1,6 @@
-# projeto de Matriz-Esparsa realizado para trabalho de Estrutura de Dados do IFG
+# Projeto de Matriz-Esparsa realizado para trabalho de Estrutura de Dados do IFG
 
-## o programa *matrizesparsa1* tem como função desenhar uma matriz de "zeros" e "uns" a partir de um conjunto de instruções salvo no arquivo de texto *fileScript.txt*
+## O programa *matrizesparsa1* tem como função desenhar uma matriz de "zeros" e "uns" a partir de um conjunto de instruções salvo no arquivo de texto *fileScript.txt*
 
 As instruções possuem a seguinte estrutura:
 
