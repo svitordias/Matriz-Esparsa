@@ -12,4 +12,4 @@ As instruções possuem a seguinte estrutura:
 
 O programa aloca dinamicamente uma matriz de tamanho *16x16* com todos os elementos indicados como *1* e todos os demais elementos como *0*.
  
-## O codigo (matriz.c) tem a função de perguntar o usuário o tamanho da matriz que deseja (Linhas, Colunas), preenche tal matriz com zeros. Em seguida, pergunta ao usuário qual o numero inteiro deseja colocar na respectiva coordenada, começando sempre da (1, 1).
+
